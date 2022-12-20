@@ -12,7 +12,9 @@ public class Main {
         Menu.mainMenu();
     }
 
-    // Write
+    // 25 mins
+    // Add 2 features to this application that allows the user to view
+    // all the orders and all the sales.
 
 
 }
