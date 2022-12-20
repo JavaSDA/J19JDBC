@@ -14,6 +14,21 @@ public class Item {
     static ResultSet rs;
     static Scanner scanner = new Scanner(System.in);
 
+    public static void createItemsTable() {
+        try {
+            ps = connection.prepareStatement(
+                    "CREATE TABLE IF NOT EXISTS items(" +
+                    "  id serial PRIMARY KEY," +
+                    "  name varchar(255) NOT NULL," +
+                    "  description varchar(255) NOT NULL," +
+                    "  qty_in_stock int," +
+                    "  price float)");
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void getAllItems() {
         try {
             ps = connection.prepareStatement("SELECT * FROM items");
@@ -92,5 +107,14 @@ public class Item {
             return false;
         }
     }
+    // 30 mins
+    // Implement 2 methods,
+    // The first method should be called deleteItem() and it
+    // should prompt the user to enter the id of the item to be deleted
+    // return a boolean if the operation is successful
+
+    // The second method should be called getItemById() and it should prompt
+    // the user to also the id of the item in question.
+
 
 }
