@@ -1,20 +1,39 @@
-import controllers.Customer;
 import controllers.Item;
 import controllers.Orders;
 import controllers.Sales;
 import controllers.menu.Menu;
+import db.Database;
+import entities.Customer;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import javax.xml.crypto.Data;
 
 public class Main {
     public static void main(String[] args) {
-        Customer.createCustomerTable();
-        Item.createItemsTable();
-        Sales.createSalesTable();
-        Orders.createOrderTable();
+        Session session = Database.getHibSesh();
+//        Customer.createCustomerTable();
+//        Item.createItemsTable();
+//        Sales.createSalesTable();
+//        Orders.createOrderTable();
         // subsequent objects will have their create table
         // methods here
 
-        Menu.mainMenu();
+//        Menu.mainMenu();
+
+        Customer cust = session.find(Customer.class, 1);
+        System.out.println(cust);
+        Customer cust1 = new Customer("Harry", "Potter", "harry@gmail.com");
+
+        try {
+            Transaction trans = session.beginTransaction();
+            session.save(cust1);
+            trans.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
     // 25 mins
     // Add 2 features to this application that allows the user to view
