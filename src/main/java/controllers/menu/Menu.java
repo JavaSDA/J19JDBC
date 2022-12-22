@@ -2,6 +2,7 @@ package controllers.menu;
 
 import controllers.Customer;
 import controllers.Item;
+import controllers.Orders;
 import controllers.Sales;
 
 import java.util.Scanner;
@@ -29,6 +30,9 @@ public class Menu {
                 break;
             case 3:
                 salesMenu();
+                break;
+            case 4:
+                orderMenu();
                 break;
             default:
                 System.out.println("Invalid option.");
@@ -105,8 +109,8 @@ public class Menu {
 
     public static void salesMenu() {
         System.out.println("Pick a submenu number to continue: ");
-        System.out.println("1. Get Item total");
-//        System.out.println("2. Create New Customer");
+        System.out.println("1. Get All Sales");
+        System.out.println("2. Create New Sale and Orders");
 //        System.out.println("3. Update Customer");
 //        System.out.println("4. Delete Customer");
 
@@ -119,13 +123,46 @@ public class Menu {
                 mainMenu();
                 break;
             case 1:
-                Sales.handleItemTotal();
+                Sales.getAllSales();
                 salesMenu();
                 break;
-//            case 2:
-//                Customer.createNewCustomer();
+            case 2:
+                Sales.createSaleAndOrder();
+                salesMenu();
+                break;
+//            case 3:
+//                Customer.updateCustomer();
 //                customerMenu();
 //                break;
+//            case 4:
+//                Customer.deleteCustomer();
+//                customerMenu();
+//                break;
+            default:
+                System.out.println("Invalid option.");
+                salesMenu();
+                break;
+        }
+    }
+
+    public static void orderMenu() {
+        System.out.println("Pick a submenu number to continue: ");
+        System.out.println("1. Get All Orders");
+//        System.out.println("3. Update Customer");
+//        System.out.println("4. Delete Customer");
+
+        System.out.println();
+        System.out.print("Select an option or enter 0 to go back to the main menu: ");
+        int option = scanner.nextInt();
+
+        switch (option) {
+            case 0:
+                mainMenu();
+                break;
+            case 1:
+                Orders.getAllOrders();
+                orderMenu();
+                break;
 //            case 3:
 //                Customer.updateCustomer();
 //                customerMenu();
