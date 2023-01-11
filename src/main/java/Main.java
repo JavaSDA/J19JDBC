@@ -8,10 +8,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import javax.xml.crypto.Data;
+import java.util.List;
 
 public class Main {
+    static Session session = Database.getHibSesh();
     public static void main(String[] args) {
-        Session session = Database.getHibSesh();
 //        Customer.createCustomerTable();
 //        Item.createItemsTable();
 //        Sales.createSalesTable();
@@ -21,14 +22,41 @@ public class Main {
 
 //        Menu.mainMenu();
 
-        Customer cust = session.find(Customer.class, 1);
-        System.out.println(cust);
-        Customer cust1 = new Customer("Harry", "Potter", "harry@gmail.com");
+//        Customer cust = session.find(Customer.class, 1);
+//        Customer cust1 = new Customer("Dwayne", "Johnson", "dwayne@gmail.com");
+        Customer terry = session.get(Customer.class, 5);
+        terry.setFirstName("Terry");
+
+
+
+
+
 
         try {
             Transaction trans = session.beginTransaction();
-            session.save(cust1);
+//            session.persist(cust1);
+            session.update(terry);
+//            session.flush();
+
             trans.commit();
+
+            listCustomerNames();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void listCustomerNames() {
+        try {
+            session.beginTransaction();
+            List<Customer> customers = session.createQuery("from customer").list();
+
+            for (Customer customer : customers) {
+                System.out.println("Name: " + customer.getFirstName());
+            }
+            session.getTransaction().commit();
+            session.close();
+//            System.out.println(session.contains("customer", Customer.class));
         } catch (Exception e) {
             e.printStackTrace();
         }
