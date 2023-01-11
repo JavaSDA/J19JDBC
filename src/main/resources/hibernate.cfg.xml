@@ -19,5 +19,8 @@
 
         <!--  Annotated entity classes  -->
         <mapping class="entities.Customer" />
+        <mapping class="entities.Item" />
+        <mapping class="entities.Sale"/>
+        <mapping class="entities.Order" />
     </session-factory>
 </hibernate-configuration>

@@ -1,9 +1,9 @@
 package controllers.menu;
 
-import controllers.Customer;
-import controllers.Item;
-import controllers.Orders;
-import controllers.Sales;
+import controllers.CustomerController;
+import controllers.ItemController;
+import controllers.OrdersController;
+import controllers.SalesController;
 
 import java.util.Scanner;
 
@@ -55,11 +55,11 @@ public class Menu {
                 mainMenu();
                 break;
             case 1:
-                Item.getAllItems();
+                ItemController.getAllItems();
                 itemsMenu();
                 break;
             case 2:
-                Item.createNewItem();
+                ItemController.createNewItem();
                 itemsMenu();
                 break;
             default:
@@ -85,19 +85,19 @@ public class Menu {
                 mainMenu();
                 break;
             case 1:
-                Customer.getAllCustomers();
+                CustomerController.getAllCustomers();
                 customerMenu();
                 break;
             case 2:
-                Customer.createNewCustomer();
+                CustomerController.createNewCustomer();
                 customerMenu();
                 break;
             case 3:
-                Customer.updateCustomer();
+                CustomerController.updateCustomer();
                 customerMenu();
                 break;
             case 4:
-                Customer.deleteCustomer();
+                CustomerController.deleteCustomer();
                 customerMenu();
                 break;
             default:
@@ -123,11 +123,11 @@ public class Menu {
                 mainMenu();
                 break;
             case 1:
-                Sales.getAllSales();
+                SalesController.getAllSales();
                 salesMenu();
                 break;
             case 2:
-                Sales.createSaleAndOrder();
+                SalesController.createSaleAndOrder();
                 salesMenu();
                 break;
 //            case 3:
@@ -160,7 +160,7 @@ public class Menu {
                 mainMenu();
                 break;
             case 1:
-                Orders.getAllOrders();
+                OrdersController.getAllOrders();
                 orderMenu();
                 break;
 //            case 3:

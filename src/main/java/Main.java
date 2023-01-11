@@ -1,15 +1,14 @@
-import controllers.Item;
-import controllers.Orders;
-import controllers.Sales;
-import controllers.menu.Menu;
+import controllers.CustomerController;
 import db.Database;
 import entities.Customer;
+import entities.Order;
+import entities.Sale;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class Main {
     public static void main(String[] args) {
-        controllers.Customer.createCustomerTable();
+        CustomerController.createCustomerTable();
 //        Customer.createCustomerTable();
 //        Item.createItemsTable();
 //        Sales.createSalesTable();
@@ -21,19 +20,28 @@ public class Main {
 
         Session session = Database.getHibSesh();
 
-        Customer cust = session.find(Customer.class, 4);
-        System.out.println(cust);
+//        Customer.listCustomers();
+//        Sale sale = session.find(Sale.class, 1);
+//        System.out.println(sale);
 
-//        Customer barry = new Customer("Barry", "Allen", "barry@gmail.com");
-//
-//        try {
-//            Transaction trans = session.beginTransaction();
-//            session.save(barry);
-//            trans.commit();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+//        Order order = session.find(Order.class, 1);
+//        System.out.println(order);
+
+//        Customer minaj = new Customer("Nicki", "Minaj", "minaj@gmail.com");
+//        Customer minaj = new Customer();
+
+//        Customer.updateCustomer("David", 6);
+        Customer.deleteCustomer(6);
+        Customer.listCustomers();
+//        System.out.println(minaj);
+//        Customer.createCustomer(minaj);
+//        Customer.listCustomers();
+
+        // - How to hack the select * from []; query
+        // - Differences between certain hibernate methods
     }
+
+
 
     // 25 mins
     // Add 2 features to this application that allows the user to view
@@ -68,5 +76,8 @@ public class Main {
     // Also, demonstrate how you would save a new entry into the items table.
 
 
+    // 30 mins.
+    // Using Hibernate create the entity object for the orders class and
+    // make find queries on the order table to test your work.
 
 }
